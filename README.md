@@ -1,3 +1,7 @@
+# Swapi-Viewer
+
+This project is a web application for viewing information from swapi.dev
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
