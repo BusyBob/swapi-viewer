@@ -1,8 +1,8 @@
 import "./App.css";
 import React from "react";
-import Home from "./components/Home";
+import Home from "./components/home/Home";
 import { Route, Routes } from "react-router-dom";
-import Details from "./components/Details";
+import Details from "./components/details/Details";
 
 class App extends React.Component {
   render() {
