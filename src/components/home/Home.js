@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import SearchBar from "./SearchBar";
+import FilmList from "./FilmList";
 
 class Home extends React.Component {
   constructor(props) {
@@ -42,7 +44,6 @@ class Home extends React.Component {
   }
 
   getAllInstances(val) {
-    console.log(this.state.data);
     var indexes = [];
     var i = 0;
     while (i < this.state.data.length) {
@@ -70,33 +71,11 @@ class Home extends React.Component {
     return (
       <div>
         <h1>Home</h1>
-        <div className="SearchBar">
-          <div className="SearchText">Search</div>
-          <input
-            value={this.state.searchTerm}
-            onChange={this.searchTermChanged}
-            name="searchTerm"
-            label="searchTerm"
-          />
-        </div>
-
-        {this.state.data.map((movie, i) => {
-          return (
-            this.state.searchHits[i] && (
-              <li key={movie.title}>
-                <Link
-                  to={{
-                    //pathname: "/" + movie.title.replace(/\s/g, ""),
-                    pathname: "/" + movie.url.substring(18),
-                  }}
-                  state={movie}
-                >
-                  {movie.title}
-                </Link>
-              </li>
-            )
-          );
-        })}
+        <SearchBar
+          searchTerm={this.searchTerm}
+          searchTermChanged={this.searchTermChanged}
+        />
+        <FilmList data={this.state.data} hits={this.state.searchHits} />
       </div>
     );
   }
