@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import FilmList from "./FilmList";
 
@@ -10,10 +9,8 @@ class Home extends React.Component {
       data: null,
       isError: false,
       searchTerm: "",
-      searchHits: [true, true, true, true, true, true],
+      searchHits: new Array(6).fill(true),
     };
-    this.searchTermChanged = this.searchTermChanged.bind(this);
-    this.getAllInstances = this.getAllInstances.bind(this);
   }
 
   componentDidMount() {
@@ -33,32 +30,17 @@ class Home extends React.Component {
     }
   }
 
-  searchTermChanged(event) {
-    var value = event.target.value;
+  updateSearchTerm = (newTerm) => {
     this.setState({
-      searchTerm: value,
-      searchHits: this.getAllInstances(value),
+      searchTerm: newTerm,
     });
-    //console.log("Search Term: ", this.state.searchTerm);
-    //console.log("Found Indices: ", this.state.searchHits);
-  }
+  };
 
-  getAllInstances(val) {
-    var indexes = [];
-    var i = 0;
-    while (i < this.state.data.length) {
-      if (
-        this.state.data[i].title.toLowerCase().includes(val.toLowerCase()) ||
-        this.state.data[i].opening_crawl
-          .toLowerCase()
-          .includes(val.toLowerCase())
-      )
-        indexes.push(true);
-      else indexes.push(false);
-      i++;
-    }
-    return indexes;
-  }
+  updateSearchHits = (newHits) => {
+    this.setState({
+      searchHits: newHits,
+    });
+  };
 
   render() {
     if (!this.state.data && !this.state.isError) {
@@ -73,7 +55,9 @@ class Home extends React.Component {
         <h1>Home</h1>
         <SearchBar
           searchTerm={this.searchTerm}
-          searchTermChanged={this.searchTermChanged}
+          onSearchTermChange={this.updateSearchTerm}
+          onNewHits={this.updateSearchHits}
+          data={this.state.data}
         />
         <FilmList data={this.state.data} hits={this.state.searchHits} />
       </div>
