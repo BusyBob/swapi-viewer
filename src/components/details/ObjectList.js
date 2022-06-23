@@ -1,9 +1,9 @@
 import React from "react";
-import ObjectLink from "./ObjectLink";
+import ObjectLink from "./ObjectTile";
 
 function ObjectList(props) {
   return (
-    <ul>
+    <ul className="ObjectList">
       {Object.keys(props.info).map((prop, i) => {
         if (Array.isArray(props.info[prop])) {
           if (props.info[prop].length !== 0)
@@ -13,7 +13,7 @@ function ObjectList(props) {
                 <ul>
                   {props.info[prop].map((link) => {
                     return (
-                      <li key={link}>
+                      <li className="ObjectTile" key={link}>
                         <ObjectLink link={link} getData={props.getData} />
                       </li>
                     );

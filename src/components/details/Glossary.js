@@ -11,7 +11,8 @@ function Glossary(props) {
               return (
                 <li key={prop}>
                   <a href={"#" + prop + "_property"}>
-                    {prop.charAt(0).toUpperCase() + prop.slice(1)}{" "}
+                    {prop.charAt(0).toUpperCase() +
+                      prop.slice(1).replace("_", " ")}{" "}
                   </a>
                 </li>
               );
@@ -19,7 +20,8 @@ function Glossary(props) {
             return (
               <li key={prop}>
                 <a href={"#" + prop + "_property"}>
-                  {prop.charAt(0).toUpperCase() + prop.slice(1)}
+                  {prop.charAt(0).toUpperCase() +
+                    prop.slice(1).replace("_", " ")}
                 </a>
               </li>
             );

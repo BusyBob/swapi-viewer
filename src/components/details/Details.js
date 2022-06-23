@@ -57,9 +57,14 @@ function Details() {
 
   return (
     <React.Fragment>
-      <div>
+      <div className="Details">
         <h1 id="title">Details</h1>
-        <img src={process.env.PUBLIC_URL + "/logo192.png"} alt="Temp"></img>
+        <img
+          src={process.env.PUBLIC_URL + "/logo192.png"}
+          alt="Temp"
+          width="256px"
+          style={{ alignSelf: "center" }}
+        ></img>
         {info !== null && <Glossary info={info} />}
         {info !== null && <ObjectList info={info} getData={getData} />}
         <a href="#title"> Back to the Top </a>
