@@ -30,9 +30,11 @@ function FilmTile(props) {
   if (typeof props.movie === "string") {
     return makeLink(
       props.movie,
-      props.movie
-        .substring(urlOffset, props.movie.length - 1)
-        .replace("/", " "),
+      props.movie.charAt(urlOffset).toUpperCase() +
+        props.movie
+          .slice(1)
+          .substring(urlOffset, props.movie.length - 2)
+          .replace("/", " "),
       null
     );
   } else return makeLink(props.movie.url, props.movie.title, props.movie);
