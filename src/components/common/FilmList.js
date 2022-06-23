@@ -1,5 +1,5 @@
 import React from "react";
-import FilmTile from "../common/FilmTile";
+import FilmTile from "./FilmTile";
 
 function FilmList(props) {
   if (props.hits.includes(true)) {

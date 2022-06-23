@@ -1,6 +1,6 @@
 import React from "react";
 import SearchBar from "./SearchBar";
-import FilmList from "./FilmList";
+import FilmList from "../common/FilmList";
 import Loading from "../common/Loading";
 import FetchErrorMessage from "../common/FetchErrorMessage";
 

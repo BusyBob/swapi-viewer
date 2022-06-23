@@ -1,6 +1,6 @@
 import React from "react";
 import ObjectLink from "./ObjectTile";
-import FilmList from "../home/FilmList";
+import FilmList from "../common/FilmList";
 
 function ObjectList(props) {
   return (
