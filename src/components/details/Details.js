@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import React from "react";
 import { useLocation } from "react-router-dom";
 import Glossary from "./Glossary";
-import ObjectList from "./ObjectList";
+import PropertyList from "./PropertyList";
 import Loading from "../common/Loading";
 import FetchErrorMessage from "../common/FetchErrorMessage";
 
@@ -69,7 +69,7 @@ function Details() {
           style={{ alignSelf: "center" }}
         ></img>
         {info !== null && <Glossary info={info} />}
-        {info !== null && <ObjectList info={info} getData={getData} />}
+        {info !== null && <PropertyList info={info} getData={getData} />}
         <a href="#title"> Back to the Top </a>
       </div>
     </React.Fragment>
