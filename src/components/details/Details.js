@@ -59,7 +59,8 @@ function Details() {
     <React.Fragment>
       <div className="Details">
         <h1 id="title" style={{ alignSelf: "center" }}>
-          Details
+          {info.hasOwnProperty("title") && info.title}
+          {info.hasOwnProperty("name") && info.name}
         </h1>
         <img
           src={process.env.PUBLIC_URL + "/logo192.png"}
