@@ -1,6 +1,8 @@
 import React from "react";
 import SearchBar from "./SearchBar";
 import FilmList from "./FilmList";
+import Loading from "../common/Loading";
+import FetchErrorMessage from "../common/FetchErrorMessage";
 
 class Home extends React.Component {
   constructor(props) {
@@ -19,6 +21,7 @@ class Home extends React.Component {
   }
 
   async loadData() {
+    console.log("Getting movie list...");
     try {
       let result = await fetch("https://swapi.dev/api/films/");
       let data = await result.json();
@@ -44,11 +47,11 @@ class Home extends React.Component {
 
   render() {
     if (!this.state.data && !this.state.isError) {
-      return <div>Loading...</div>;
+      return <Loading />;
     }
 
     if (this.state.isError) {
-      return <div>Error encountered. Try again later.</div>;
+      return <FetchErrorMessage />;
     }
     return (
       <div>
