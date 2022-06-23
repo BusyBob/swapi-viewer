@@ -9,13 +9,12 @@ function ObjectList(props) {
         {props.property.charAt(0).toUpperCase() + props.property.slice(1)}
       </h3>
 
-      {props.property.includes("film") && (
+      {props.property.includes("film") ? (
         <FilmList
           data={props.info[props.property]}
           hits={new Array(props.info[props.property].length).fill(true)}
         />
-      )}
-      {!props.property.includes("film") && (
+      ) : (
         <ul className="ObjectList">
           {props.info[props.property].map((link) => {
             return (

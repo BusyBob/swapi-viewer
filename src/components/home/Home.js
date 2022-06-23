@@ -53,6 +53,7 @@ class Home extends React.Component {
     if (this.state.isError) {
       return <FetchErrorMessage />;
     }
+
     return (
       <div className="Home">
         <h1>Home</h1>

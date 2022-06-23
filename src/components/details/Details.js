@@ -47,31 +47,32 @@ function Details() {
     getData();
   }, [data]);
 
-  if (isLoading) {
-    return <Loading />;
-  }
-
-  if (isError) {
-    return <FetchErrorMessage />;
-  }
-
   return (
     <React.Fragment>
-      <div className="Details">
-        <h1 id="title" style={{ alignSelf: "center" }}>
-          {info.hasOwnProperty("title") && info.title}
-          {info.hasOwnProperty("name") && info.name}
-        </h1>
-        <img
-          src={process.env.PUBLIC_URL + "/logo192.png"}
-          alt="Temp"
-          width="256px"
-          style={{ alignSelf: "center" }}
-        ></img>
-        {info !== null && <Glossary info={info} />}
-        {info !== null && <PropertyList info={info} getData={getData} />}
-        <a href="#title"> Back to the Top </a>
-      </div>
+      {isError && <FetchErrorMessage />}
+      {isLoading && <Loading />}
+
+      {!isError && !isLoading && (
+        <div className="Details">
+          <h1 id="title" style={{ alignSelf: "center" }}>
+            {info.hasOwnProperty("title") && info.title}
+            {info.hasOwnProperty("name") && info.name}
+          </h1>
+          <img
+            src={process.env.PUBLIC_URL + "/logo192.png"}
+            alt="Temp"
+            style={{
+              alignSelf: "center",
+              width: "50%",
+              maxWidth: "256px",
+              minWidth: "128px",
+            }}
+          ></img>
+          {<Glossary info={info} />}
+          {<PropertyList info={info} getData={getData} />}
+          <a href="#title"> Back to the Top </a>
+        </div>
+      )}
     </React.Fragment>
   );
 }

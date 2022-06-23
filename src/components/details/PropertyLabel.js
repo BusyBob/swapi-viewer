@@ -14,22 +14,24 @@ function PropertyLabel(props) {
         {props.prop.toUpperCase().replace("_", " ")}
       </h4>
       {props.info[props.prop] === null && (
-        <label style={{ display: "block", textAlign: "justify" }}>
+        <label
+          style={{ display: "block", textAlign: "justify", fontSize: "20px" }}
+        >
           Unknown
         </label>
       )}
       {props.info[props.prop] !== null &&
-        !props.info[props.prop].toString().includes("https") && (
-          <label style={{ display: "block", textAlign: "justify" }}>
-            {props.info[props.prop]}
-          </label>
-        )}
-      {props.info[props.prop] !== null &&
-        props.info[props.prop].toString().includes("https") && (
-          <button className="ObjectTile">
-            <ObjectTile link={props.info[props.prop]} getData={props.getData} />
-          </button>
-        )}
+      props.info[props.prop].toString().includes("https") ? (
+        <button className="ObjectTile">
+          <ObjectTile link={props.info[props.prop]} getData={props.getData} />
+        </button>
+      ) : (
+        <label
+          style={{ display: "block", textAlign: "justify", fontSize: "20px" }}
+        >
+          {props.info[props.prop]}
+        </label>
+      )}
     </div>
   );
 }
