@@ -58,7 +58,9 @@ function Details() {
   return (
     <React.Fragment>
       <div className="Details">
-        <h1 id="title">Details</h1>
+        <h1 id="title" style={{ alignSelf: "center" }}>
+          Details
+        </h1>
         <img
           src={process.env.PUBLIC_URL + "/logo192.png"}
           alt="Temp"

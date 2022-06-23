@@ -1,5 +1,4 @@
 import React from "react";
-import FilmLink from "./FilmLink";
 import FilmTile from "../common/FilmTile";
 
 function FilmList(props) {

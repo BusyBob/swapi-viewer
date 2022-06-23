@@ -3,14 +3,18 @@ import ObjectLink from "./ObjectTile";
 
 function ObjectList(props) {
   return (
-    <ul className="ObjectList">
+    <ul>
       {Object.keys(props.info).map((prop, i) => {
         if (Array.isArray(props.info[prop])) {
           if (props.info[prop].length !== 0)
             return (
-              <li key={prop} id={prop + "_property"}>
+              <li
+                key={prop}
+                id={prop + "_property"}
+                style={{ textDecoration: "underline" }}
+              >
                 <h3>{prop.charAt(0).toUpperCase() + prop.slice(1)}</h3>
-                <ul>
+                <ul className="ObjectList">
                   {props.info[prop].map((link) => {
                     return (
                       <li className="ObjectTile" key={link}>
@@ -24,8 +28,27 @@ function ObjectList(props) {
             );
         } else
           return (
-            <li key={i} id={prop + "_property"}>
-              {prop.toUpperCase().replace("_", " ")}: {props.info[prop]}
+            <li
+              key={i}
+              id={prop + "_property"}
+              style={{
+                marginLeft: "5%",
+                marginRight: "5%",
+                marginTop: "40px",
+              }}
+            >
+              <h4
+                style={{
+                  textAlign: "left",
+                  marginBottom: "5px",
+                  textDecoration: "underline",
+                }}
+              >
+                {prop.toUpperCase().replace("_", " ")}
+              </h4>
+              <label style={{ display: "block", textAlign: "justify" }}>
+                {props.info[prop]}
+              </label>
             </li>
           );
       })}
