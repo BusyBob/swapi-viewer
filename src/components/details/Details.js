@@ -45,7 +45,7 @@ function Details() {
   useEffect(() => {
     console.log("Component loaded, grabbing data...");
     getData();
-  });
+  }, [data]);
 
   if (isLoading) {
     return <Loading />;
