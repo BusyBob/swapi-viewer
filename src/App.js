@@ -11,7 +11,7 @@ class App extends React.Component {
         <header className="App-header">
           <Routes>
             <Route exact path="/" element={<Home />} />
-            <Route exact path="/*" element={<Details />} />
+            <Route exact path="/detail/*" element={<Details />} />
           </Routes>
         </header>
       </div>

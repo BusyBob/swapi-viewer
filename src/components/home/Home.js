@@ -1,5 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import SearchBar from "./SearchBar";
+import FilmList from "./FilmList";
+import Loading from "../common/Loading";
+import FetchErrorMessage from "../common/FetchErrorMessage";
 
 class Home extends React.Component {
   constructor(props) {
@@ -8,10 +11,8 @@ class Home extends React.Component {
       data: null,
       isError: false,
       searchTerm: "",
-      searchHits: [true, true, true, true, true, true],
+      searchHits: new Array(6).fill(true),
     };
-    this.searchTermChanged = this.searchTermChanged.bind(this);
-    this.getAllInstances = this.getAllInstances.bind(this);
   }
 
   componentDidMount() {
@@ -20,6 +21,7 @@ class Home extends React.Component {
   }
 
   async loadData() {
+    console.log("Getting movie list...");
     try {
       let result = await fetch("https://swapi.dev/api/films/");
       let data = await result.json();
@@ -31,72 +33,36 @@ class Home extends React.Component {
     }
   }
 
-  searchTermChanged(event) {
-    var value = event.target.value;
+  updateSearchTerm = (newTerm) => {
     this.setState({
-      searchTerm: value,
-      searchHits: this.getAllInstances(value),
+      searchTerm: newTerm,
     });
-    //console.log("Search Term: ", this.state.searchTerm);
-    //console.log("Found Indices: ", this.state.searchHits);
-  }
+  };
 
-  getAllInstances(val) {
-    console.log(this.state.data);
-    var indexes = [];
-    var i = 0;
-    while (i < this.state.data.length) {
-      if (
-        this.state.data[i].title.toLowerCase().includes(val.toLowerCase()) ||
-        this.state.data[i].opening_crawl
-          .toLowerCase()
-          .includes(val.toLowerCase())
-      )
-        indexes.push(true);
-      else indexes.push(false);
-      i++;
-    }
-    return indexes;
-  }
+  updateSearchHits = (newHits) => {
+    this.setState({
+      searchHits: newHits,
+    });
+  };
 
   render() {
     if (!this.state.data && !this.state.isError) {
-      return <div>Loading...</div>;
+      return <Loading />;
     }
 
     if (this.state.isError) {
-      return <div>Error encountered. Try again later.</div>;
+      return <FetchErrorMessage />;
     }
     return (
       <div>
         <h1>Home</h1>
-        <div className="SearchBar">
-          <div className="SearchText">Search</div>
-          <input
-            value={this.state.searchTerm}
-            onChange={this.searchTermChanged}
-            name="searchTerm"
-            label="searchTerm"
-          />
-        </div>
-
-        {this.state.data.map((movie, i) => {
-          return (
-            this.state.searchHits[i] && (
-              <li key={movie.title}>
-                <Link
-                  to={{
-                    //pathname: "/" + movie.title.replace(/\s/g, ""),
-                    pathname: "/" + movie.url.substring(18),
-                  }}
-                  state={movie}
-                >
-                  {movie.title}
-                </Link>
-              </li>
-            )
-          );
-        })}
+        <SearchBar
+          searchTerm={this.searchTerm}
+          onSearchTermChange={this.updateSearchTerm}
+          onNewHits={this.updateSearchHits}
+          data={this.state.data}
+        />
+        <FilmList data={this.state.data} hits={this.state.searchHits} />
       </div>
     );
   }
