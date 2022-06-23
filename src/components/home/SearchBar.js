@@ -5,7 +5,7 @@ function SearchBar(props) {
     var value = event.target.value;
     props.onSearchTermChange(value);
     getAllInstances(value);
-    console.log("Current Search Term: ", value);
+    //console.log("Current Search Term: ", value);
   };
 
   const getAllInstances = (val) => {
@@ -22,7 +22,7 @@ function SearchBar(props) {
     }
     props.onNewHits(indexes);
 
-    console.log("Hits: ", indexes);
+    //console.log("Hits: ", indexes);
   };
 
   return (

@@ -2,12 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function ObjectLink(props) {
+  const urlOffset = 22;
   return (
     <Link
       to={{
-        pathname: "/" + props.link.substring(18),
+        pathname: "/detail/" + props.link.substring(urlOffset),
       }}
-      state={props.link.substring(18)}
+      state={props.link.substring(urlOffset)}
       onClick={() => props.getData()}
     >
       {props.link}

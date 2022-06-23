@@ -19,8 +19,8 @@ function Details() {
 
   const getData = async () => {
     setLoading(true);
-    var query = data.pathname;
-    const url = "https://swapi.dev/" + query;
+    var query = data.pathname.substring(8);
+    const url = "https://swapi.dev/api/" + query;
     if (apiMap.has(url)) {
       setInfo(apiMap.get(url));
       //console.log("Found in Map");
