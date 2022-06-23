@@ -54,7 +54,7 @@ class Home extends React.Component {
       return <FetchErrorMessage />;
     }
     return (
-      <div>
+      <div className="Home">
         <h1>Home</h1>
         <SearchBar
           searchTerm={this.searchTerm}
