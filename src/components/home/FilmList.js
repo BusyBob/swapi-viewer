@@ -8,7 +8,7 @@ function FilmList(props) {
         {props.data.map((movie, i) => {
           return (
             props.hits[i] && (
-              <li className="FilmTile" key={movie.title}>
+              <li className="FilmTile" key={i}>
                 <FilmTile movie={movie} />
               </li>
             )

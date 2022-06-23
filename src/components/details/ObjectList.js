@@ -1,5 +1,6 @@
 import React from "react";
 import ObjectLink from "./ObjectTile";
+import FilmList from "../home/FilmList";
 
 function ObjectList(props) {
   return (
@@ -14,15 +15,24 @@ function ObjectList(props) {
                 style={{ textDecoration: "underline" }}
               >
                 <h3>{prop.charAt(0).toUpperCase() + prop.slice(1)}</h3>
-                <ul className="ObjectList">
-                  {props.info[prop].map((link) => {
-                    return (
-                      <li className="ObjectTile" key={link}>
-                        <ObjectLink link={link} getData={props.getData} />
-                      </li>
-                    );
-                  })}
-                </ul>
+
+                {prop.includes("film") && (
+                  <FilmList
+                    data={props.info[prop]}
+                    hits={new Array(props.info[prop].length).fill(true)}
+                  />
+                )}
+                {!prop.includes("film") && (
+                  <ul className="ObjectList">
+                    {props.info[prop].map((link) => {
+                      return (
+                        <li className="ObjectTile" key={link}>
+                          <ObjectLink link={link} getData={props.getData} />
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
                 <br></br>
               </li>
             );

@@ -21,7 +21,7 @@ function ObjectLink(props) {
   return (
     <Link
       to={{
-        pathname: "/detail/" + props.link.substring(urlOffset),
+        pathname: "/detail/" + props.link.substring(urlOffset) + "#title",
       }}
       state={props.link.substring(urlOffset)}
       onClick={() => props.getData()}
