@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function ObjectLink(props) {
+function ObjectTile(props) {
   const urlOffset = 22;
 
   const getLabel = () => {
@@ -37,4 +37,4 @@ function ObjectLink(props) {
   );
 }
 
-export default ObjectLink;
+export default ObjectTile;

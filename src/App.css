@@ -79,6 +79,8 @@ ul {
   border-radius: 5px;
   border-width: 10px;
   border: 2px solid rgb(160, 160, 160);
+
+  font-size: 25px;
 }
 
 .ObjectTile:hover {

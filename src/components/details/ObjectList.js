@@ -1,8 +1,9 @@
 import React from "react";
-import ObjectLink from "./ObjectTile";
+import ObjectTile from "./ObjectTile";
 import FilmList from "../common/FilmList";
 
 function ObjectList(props) {
+  console.log("ObjectList got: ", props);
   return (
     <ul>
       {Object.keys(props.info).map((prop, i) => {
@@ -27,7 +28,7 @@ function ObjectList(props) {
                     {props.info[prop].map((link) => {
                       return (
                         <li className="ObjectTile" key={link}>
-                          <ObjectLink link={link} getData={props.getData} />
+                          <ObjectTile link={link} getData={props.getData} />
                         </li>
                       );
                     })}
@@ -56,9 +57,26 @@ function ObjectList(props) {
               >
                 {prop.toUpperCase().replace("_", " ")}
               </h4>
-              <label style={{ display: "block", textAlign: "justify" }}>
-                {props.info[prop]}
-              </label>
+              {props.info[prop] !== null &&
+                !props.info[prop].toString().includes("https") && (
+                  <label style={{ display: "block", textAlign: "justify" }}>
+                    {props.info[prop]}
+                  </label>
+                )}
+              {props.info[prop] === null && (
+                <label style={{ display: "block", textAlign: "justify" }}>
+                  Unknown
+                </label>
+              )}
+              {props.info[prop] !== null &&
+                props.info[prop].toString().includes("https") && (
+                  <button className="ObjectTile">
+                    <ObjectTile
+                      link={props.info[prop]}
+                      getData={props.getData}
+                    />
+                  </button>
+                )}
             </li>
           );
       })}
