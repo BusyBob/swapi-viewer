@@ -31,7 +31,7 @@ function PropertyList(props) {
               style={{
                 marginLeft: "5%",
                 marginRight: "5%",
-                marginTop: "40px",
+                marginTop: "1rem",
               }}
             >
               <PropertyLabel

@@ -26,7 +26,7 @@ function SearchBar(props) {
   };
 
   return (
-    <div className="SearchBar">
+    <div className="SearchBar" style={{ margin: "1rem" }}>
       <div className="SearchText">Search</div>
       <input
         value={props.searchTerm}

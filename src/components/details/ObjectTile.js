@@ -30,7 +30,7 @@ function ObjectTile(props) {
         className="FilmPoster"
         src={process.env.PUBLIC_URL + "/logo192.png"}
         alt={"Picture of " + getLabel()}
-        width="128px"
+        width="80%"
       ></img>
       <div>{getLabel()}</div>
     </Link>

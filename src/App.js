@@ -12,7 +12,7 @@ class App extends React.Component {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/detail/*" element={<Details />} />
-          <Route exact path="/*" element={<NoMatch />} />
+          <Route path="*" element={<NoMatch />} />
         </Routes>
       </div>
     );

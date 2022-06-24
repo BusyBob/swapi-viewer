@@ -7,7 +7,7 @@ function PropertyLabel(props) {
       <h4
         style={{
           textAlign: "left",
-          marginBottom: "5px",
+          marginBottom: "0.4rem",
           textDecoration: "underline",
         }}
       >
@@ -15,7 +15,7 @@ function PropertyLabel(props) {
       </h4>
       {props.info[props.prop] === null && (
         <label
-          style={{ display: "block", textAlign: "justify", fontSize: "20px" }}
+          style={{ display: "block", textAlign: "justify", fontSize: "1rem" }}
         >
           Unknown
         </label>
@@ -27,7 +27,7 @@ function PropertyLabel(props) {
         </button>
       ) : (
         <label
-          style={{ display: "block", textAlign: "justify", fontSize: "20px" }}
+          style={{ display: "block", textAlign: "justify", fontSize: "1rem" }}
         >
           {props.info[props.prop]}
         </label>
