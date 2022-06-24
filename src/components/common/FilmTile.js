@@ -17,7 +17,7 @@ function FilmTile(props) {
           className="FilmPoster"
           src={process.env.PUBLIC_URL + "/logo192.png"}
           alt={"Poster of " + title}
-          width="128px"
+          width="80%"
         ></img>
         {/*Temporary movie title.
       The poster image should have the title already

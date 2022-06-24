@@ -9,16 +9,16 @@ function SearchBar(props) {
   };
 
   const getAllInstances = (val) => {
-    var indexes = [];
-    var i = 0;
-    while (i < props.data.length) {
+    let indexes = [];
+
+    for (let i = 0; i < props.data.length; i++) {
+      let searching = props.data[i];
       if (
-        props.data[i].title.toLowerCase().includes(val.toLowerCase()) ||
-        props.data[i].opening_crawl.toLowerCase().includes(val.toLowerCase())
+        searching.title.toLowerCase().includes(val.toLowerCase()) ||
+        searching.opening_crawl.toLowerCase().includes(val.toLowerCase())
       )
         indexes.push(true);
       else indexes.push(false);
-      i++;
     }
     props.onNewHits(indexes);
 
@@ -26,7 +26,7 @@ function SearchBar(props) {
   };
 
   return (
-    <div className="SearchBar">
+    <div className="SearchBar" style={{ margin: "1rem" }}>
       <div className="SearchText">Search</div>
       <input
         value={props.searchTerm}
