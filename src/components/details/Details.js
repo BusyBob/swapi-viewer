@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import React from "react";
 import { useLocation } from "react-router-dom";
 import Glossary from "./Glossary";
-import ObjectList from "./ObjectList";
+import PropertyList from "./PropertyList";
 import Loading from "../common/Loading";
 import FetchErrorMessage from "../common/FetchErrorMessage";
 
@@ -45,25 +45,34 @@ function Details() {
   useEffect(() => {
     console.log("Component loaded, grabbing data...");
     getData();
-  });
-
-  if (isLoading) {
-    return <Loading />;
-  }
-
-  if (isError) {
-    return <FetchErrorMessage />;
-  }
+  }, [data]);
 
   return (
     <React.Fragment>
-      <div>
-        <h1 id="title">Details</h1>
-        <img src={process.env.PUBLIC_URL + "/logo192.png"} alt="Temp"></img>
-        {info !== null && <Glossary info={info} />}
-        {info !== null && <ObjectList info={info} getData={getData} />}
-        <a href="#title"> Back to the Top </a>
-      </div>
+      {isError && <FetchErrorMessage />}
+      {isLoading && <Loading />}
+
+      {!isError && !isLoading && (
+        <div className="Details">
+          <h1 id="title" style={{ alignSelf: "center" }}>
+            {info.hasOwnProperty("title") && info.title}
+            {info.hasOwnProperty("name") && info.name}
+          </h1>
+          <img
+            src={process.env.PUBLIC_URL + "/logo192.png"}
+            alt="Temp"
+            style={{
+              alignSelf: "center",
+              width: "50%",
+              maxWidth: "256px",
+              minWidth: "128px",
+            }}
+          ></img>
+          {<Glossary info={info} />}
+          {<PropertyList info={info} getData={getData} />}
+          <a href="#title"> Back to the Top </a>
+        </div>
+      )}
     </React.Fragment>
   );
 }

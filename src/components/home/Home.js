@@ -1,6 +1,6 @@
 import React from "react";
 import SearchBar from "./SearchBar";
-import FilmList from "./FilmList";
+import FilmList from "../common/FilmList";
 import Loading from "../common/Loading";
 import FetchErrorMessage from "../common/FetchErrorMessage";
 
@@ -53,8 +53,9 @@ class Home extends React.Component {
     if (this.state.isError) {
       return <FetchErrorMessage />;
     }
+
     return (
-      <div>
+      <div className="Home">
         <h1>Home</h1>
         <SearchBar
           searchTerm={this.searchTerm}
