@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function FetchErrorMessage() {
+function NoMatch() {
   return (
     <div
       style={{
         textAlign: "center",
       }}
     >
-      <div>Error encountered. Try again later.</div>
+      <div>Unable to navigate to specified page. Please return to Home.</div>
       <Link
         to={{
           pathname: "/",
@@ -20,4 +20,4 @@ function FetchErrorMessage() {
   );
 }
 
-export default FetchErrorMessage;
+export default NoMatch;

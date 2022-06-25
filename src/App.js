@@ -1,19 +1,19 @@
 import "./App.css";
 import React from "react";
-import Home from "./components/home/Home";
 import { Route, Routes } from "react-router-dom";
+import Home from "./components/home/Home";
 import Details from "./components/details/Details";
+import NoMatch from "./components/common/NoMatch";
 
 class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route exact path="/detail/*" element={<Details />} />
-          </Routes>
-        </header>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/detail/*" element={<Details />} />
+          <Route path="*" element={<NoMatch />} />
+        </Routes>
       </div>
     );
   }

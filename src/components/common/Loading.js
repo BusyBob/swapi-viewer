@@ -1,7 +1,15 @@
 import React from "react";
 
 function Loading() {
-  return <div>Loading...</div>;
+  return (
+    <div
+      style={{
+        textAlign: "center",
+      }}
+    >
+      Loading...
+    </div>
+  );
 }
 
 export default Loading;

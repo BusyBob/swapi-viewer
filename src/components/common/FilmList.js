@@ -1,15 +1,15 @@
 import React from "react";
-import FilmLink from "./FilmLink";
+import FilmTile from "./FilmTile";
 
 function FilmList(props) {
   if (props.hits.includes(true)) {
     return (
-      <ul>
+      <ul className="FilmList">
         {props.data.map((movie, i) => {
           return (
             props.hits[i] && (
-              <li key={movie.title}>
-                <FilmLink movie={movie} />
+              <li className="FilmTile" key={i}>
+                <FilmTile movie={movie} />
               </li>
             )
           );
